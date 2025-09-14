@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Avaliação</title>
+    <link rel="stylesheet" href="{% static 'Reviews/css/estilo.css' %}">
+</head>
+<body>
+    {% include 'Reviews/links.html' %}
+    <h1>Criar Avaliação</h1>
+    {% if mensagem %}
+        <p>{{ mensagem }}</p>
+    {% endif %}
+    <form action="" method="POST">
+        <fieldset style="width: max-content;">
+            <legend>Nova Avaliação</legend>
+            {% csrf_token %}
+            <table class='formulario'>
+                {{ formulario.as_table }}
+            </table>
+            <button type="submit">Criar Avaliação</button>
+        </fieldset>
+    </form>
+</body>
+</html>

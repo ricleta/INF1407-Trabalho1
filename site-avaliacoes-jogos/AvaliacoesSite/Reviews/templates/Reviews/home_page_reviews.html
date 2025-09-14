@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - Avaliações</title>
+    <link rel="stylesheet" href="{% static 'Reviews/css/estilo.css' %}">
+</head>
+<body>
+    {% include 'Reviews/links.html' %}
+    <h1>Página Inicial de Avaliações</h1>
+    {% if user.is_authenticated %}
+        <p>Olá, {{ user.username }}! Veja suas avaliações ou adicione uma nova.</p>
+    {% else %}
+        <p>Faça login para gerenciar suas avaliações!</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliações de Jogos/Filmes</title>
+    <link rel="stylesheet" href="{% static 'Reviews/css/estilo.css' %}">
+</head>
+<body>
+    {% include 'Reviews/links.html' %}
+    <h1>Bem-vindo ao Site de Avaliações de Jogos/Filmes</h1>
+    {% if user.is_authenticated %}
+        <p>
+            Olá, {{ user.username }}! 
+            <form action="{% url 'logout' %}" method="post" class="logout-form">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">Sair</button>
+            </form>
+        </p>
+    {% else %}
+        <p><a href="{% url 'login' %}">Entrar</a> | <a href="{% url 'Reviews:signup' %}">Cadastrar</a></p>
+    {% endif %}
+</body>
+</html>

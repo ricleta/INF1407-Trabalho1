@@ -1,0 +1,13 @@
+<a href="{% url 'home-page' %}">Home</a> |
+<a href="{% url 'Reviews:home-page-reviews' %}">Avaliações</a> |
+{% if user.is_authenticated %}
+    <a href="{% url 'Reviews:lista-reviews' %}">Minhas Avaliações</a> |
+    <a href="{% url 'Reviews:cria-review' %}">Criar Avaliação</a> |
+    <form action="{% url 'logout' %}" method="post" class="logout-form">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">Sair</button>
+    </form>
+{% else %}
+    <a href="{% url 'login' %}">Entrar</a> |
+    <a href="{% url 'Reviews:signup' %}">Cadastrar</a>
+{% endif %}

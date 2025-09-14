@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Avaliações</title>
+    <link rel="stylesheet" href="{% static 'Reviews/css/estilo.css' %}">
+</head>
+<body>
+    {% include 'Reviews/links.html' %}
+    <h1>Minhas Avaliações</h1>
+    <table>
+        <tr>
+            <th>Título</th>
+            <th>Nota</th>
+            <th>Comentário</th>
+            <th>Data</th>
+            <th>Ação</th>
+        </tr>
+        {% for review in reviews %}
+        <tr>
+            <td>{{ review.title }}</td>
+            <td>{{ review.rating }}</td>
+            <td>{{ review.comment }}</td>
+            <td>{{ review.created_at|date:"d/m/Y H:i" }}</td>
+            <td>
+                <a href="{% url 'Reviews:atualiza-review' pk=review.id %}">Editar</a> |
+                <a href="{% url 'Reviews:deleta-review' pk=review.id %}">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <th colspan="5">Nenhuma avaliação cadastrada</th>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
