@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos os jogos</title>
+    <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
+</head>
+<body>
+    {% include 'Games/links.html' %}
+    <h1>Minhas Avaliações</h1>
+    <table>
+        <tr>
+            <th>Título</th>
+            <th>Plataformas</th>
+            <th>Descrição</th>
+            <th>Data</th>
+            <th>Desenvolvedor</th>
+        </tr>
+        {% for game in games %}
+        <tr>
+            <td>{{ game.title }}</td>
+            <td>{{ game.platforms }}</td>
+            <td>{{ game.description }}</td>
+            <td>{{ game.release_date|date:"d/m/Y" }}</td>
+            <td>{{ game.developer }}</td>
+            <td>
+                <a href="{% url 'Games:atualiza-games' pk=game.pk %}">Editar</a> |
+                <a href="{% url 'Games:deleta-games' pk=game.pk %}">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <th colspan="5">Nenhuma avaliação cadastrada</th>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -17,8 +17,8 @@
         <fieldset style="width: max-content;">
             <legend>Editar Avaliação</legend>
             {% csrf_token %}
-            <table class='formulario'>
-                {{ formulario.as_table }}
+            <table class='form'>
+                {{ form.as_table }}
             </table>
             <button type="submit">Atualizar Avaliação</button>
         </fieldset>

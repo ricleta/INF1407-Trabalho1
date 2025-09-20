@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Game</title>
+    <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
+</head>
+<body>
+    {% include 'Games/links.html' %}
+    <h1>Excluir Game</h1>
+    <p>Deseja realmente excluir o game de "{{ review.title }}"?</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <button type="submit">Confirmar Exclusão</button>
+        <a href="{% url 'Games:lista-games' %}">Cancelar</a>
+    </form>
+</body>
+</html>

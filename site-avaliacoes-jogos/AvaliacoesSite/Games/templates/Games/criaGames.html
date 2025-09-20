@@ -4,23 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Avaliação</title>
-    <link rel="stylesheet" href="{% static 'Reviews/css/estilo.css' %}">
+    <title>Criar Jogo</title>
+    <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
 </head>
 <body>
-    {% include 'Reviews/links.html' %}
-    <h1>Criar Avaliação</h1>
-    {% if mensagem %}
-        <p>{{ mensagem }}</p>
-    {% endif %}
+    {% include 'Games/links.html' %}
+    <h1>{% if object %}Atualizar Jogo{% else %}Criar um Jogo{% endif %}</h1>
+
     <form action="" method="POST">
         <fieldset style="width: max-content;">
-            <legend>Nova Avaliação</legend>
+            <legend>Novo Jogo</legend>
             {% csrf_token %}
             <table class='form'>
                 {{ form.as_table }}
             </table>
-            <button type="submit">Criar Avaliação</button>
+            <button type="submit">{%if object %}Atualizar Jogo{% else %}Criar Jogo{% endif %}</button>
         </fieldset>
     </form>
 </body>
