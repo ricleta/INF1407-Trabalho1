@@ -9,5 +9,4 @@ urlpatterns = [
     path('cria_review/', views.ReviewCreateView.as_view(), name='cria-review'),
     path('atualiza_review/<int:pk>/', views.ReviewUpdateView.as_view(), name='atualiza-review'),
     path('deleta_review/<int:pk>/', views.ReviewDeleteView.as_view(), name='deleta-review'),
-    path('signup/', views.signup, name='signup'),
 ]

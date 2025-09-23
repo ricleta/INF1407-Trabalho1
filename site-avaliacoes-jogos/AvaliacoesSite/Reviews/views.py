@@ -17,16 +17,6 @@ def home_page(request):
 def home_page_reviews(request):
     return render(request, 'Reviews/home_page_reviews.html')
 
-def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse_lazy('login'))
-    else:
-        form = UserCreationForm()
-    return render(request, 'Reviews/signup.html', {'form': form})
-
 @method_decorator(login_required, name='dispatch')
 class ReviewListView(ListView):
     model = Review

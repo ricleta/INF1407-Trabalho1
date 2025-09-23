@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'Reviews',
     'Games',
+    'Seguranca',
 ]
 
 MIDDLEWARE = [
@@ -102,10 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
-
-LOGIN_REDIRECT_URL = 'Reviews:home-page-reviews'
-LOGOUT_REDIRECT_URL = 'home-page'
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

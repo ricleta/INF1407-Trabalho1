@@ -10,7 +10,7 @@
 <body>
     {% include 'Games/links.html' %}
     <h1>Excluir Game</h1>
-    <p>Deseja realmente excluir o game de "{{ review.title }}"?</p>
+    <p>Deseja realmente excluir o game "{{ gamesmodel.title }}"?</p>
     <form action="" method="POST">
         {% csrf_token %}
         <button type="submit">Confirmar Exclusão</button>

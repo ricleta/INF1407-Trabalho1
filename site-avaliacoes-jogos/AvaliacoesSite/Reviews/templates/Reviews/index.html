@@ -13,13 +13,13 @@
     {% if user.is_authenticated %}
         <p>
             Olá, {{ user.username }}! 
-            <form action="{% url 'logout' %}" method="post" class="logout-form">
+            <form action="{% url 'Seguranca:logout' %}" method="post" class="logout-form">
                 {% csrf_token %}
                 <button type="submit" class="logout-btn">Sair</button>
             </form>
         </p>
     {% else %}
-        <p><a href="{% url 'login' %}">Entrar</a> | <a href="{% url 'Reviews:signup' %}">Cadastrar</a></p>
+        <p><a href="{% url 'Seguranca:login' %}">Entrar</a> | <a href="{% url 'Seguranca:signup' %}">Cadastrar</a></p>
     {% endif %}
 </body>
 </html>
