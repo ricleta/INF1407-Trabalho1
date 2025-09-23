@@ -11,7 +11,16 @@ TODO
 TODO
 
 ## Manual do Usuário
-### CRUD
+### CRUD Reviews
+1) Create
+   TODO
+2) Read
+   TODO
+3) Update
+   TODO
+4) Delete
+   TODO
+### CRUD Games
 1) Create
    TODO
 2) Read
