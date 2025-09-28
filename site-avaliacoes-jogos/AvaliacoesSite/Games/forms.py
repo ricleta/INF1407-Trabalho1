@@ -7,9 +7,24 @@ class GamesForm(forms.ModelForm):
 
     This form defines the fields and validation rules for the Games model.
     """
+
+    platforms = forms.MultipleChoiceField(
+        choices=[
+            ('PC', 'PC'),
+            ('PlayStation', 'PlayStation'),
+            ('Xbox', 'Xbox'),
+            ('Nintendo Switch', 'Nintendo Switch'),
+            ('Mobile', 'Mobile'),
+            ('Wii', 'Wii'),
+        ],
+        widget=forms.CheckboxSelectMultiple,
+        help_text='Selecione as plataformas em que o jogo está disponível',
+        label='Plataformas'
+    )
+
     class Meta:
         model = GamesModel
-        fields = '__all__'
+        fields = ['title', 'platforms', 'description', 'release_date']
         error_messages = {
                 'title': {
                     'required': "O título é obrigatório.",

@@ -21,12 +21,7 @@ def signup(request):
 
 class login_view(LoginView):
     template_name = 'Seguranca/login.html'
-    fields = '__all__'
     redirect_authenticated_user = True
-
-    def get_success_url(self):
-        user = self.request.user
-        return reverse_lazy('home-page')
 
 @login_required
 def logout_view(request):

@@ -1,36 +1,57 @@
 from .models import Review
 from django import forms
+from Games.models import GamesModel
 
 class ReviewForm(forms.ModelForm):
+    game = forms.ModelChoiceField(
+        queryset=GamesModel.objects.all(),
+        label="Jogo",
+        empty_label="Selecione um jogo",
+        to_field_name="title"
+    )
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+
+        # If the form is bound to an existing instance (i.e. we are editing a review),
+        # only allow the user to select the game they originally reviewed.
+        if self.instance and self.instance.pk:
+            self.fields['game'].queryset = GamesModel.objects.filter(pk=self.instance.game.pk)
+
     class Meta:
         model = Review
-        fields = ['title', 'rating', 'comment']
+        fields = ['game', 'rating', 'comment']
         labels = {
-            'title': 'Título do Jogo/Filme',
+            'game': 'Título do Jogo',
             'rating': 'Nota (1 a 10)',
             'comment': 'Comentário',
         }
         help_texts = {
-            'title': 'Informe o título do jogo ou filme.',
+            'game': 'Informe o título do jogo ou filme.',
             'rating': 'Escolha uma nota de 1 a 10.',
-            'comment': 'Escreva um comentário sobre o jogo/filme (máx. 500 caracteres).',
+            'comment': 'Escreva um comentário sobre o jogo com (min. 20 | máx. 500) caracteres.',
         }
         error_messages = {
-            'title': {'max_length': 'O título é muito longo.', 'required': 'O título é obrigatório.'},
+            'game': {'max_length': 'O título é muito longo.', 'required': 'O título é obrigatório.'},
             'rating': {'required': 'A nota é obrigatória.'},
             'comment': {'max_length': 'O comentário é muito longo.', 'required': 'O comentário é obrigatório.'},
         }
 
-    def clean_title(self):
-        """Custom validation to ensure title is valid."""
-        title = self.cleaned_data.get('title')
-        
-        if not title:
-            raise forms.ValidationError("O título é obrigatório.")
-        if len(title) < 3:
-            raise forms.ValidationError("O título deve ter pelo menos 3 caracteres.")
-        
-        return title
+    def clean(self):
+        """
+        Custom validation to ensure a user doesn't review the same game twice.
+        This check is only performed when creating a new review.
+        """
+        cleaned_data = super().clean()
+        game = cleaned_data.get('game')
+
+        # self.instance.pk is None for new reviews (CreateView)
+        if self.instance.pk is None and game and self.user:
+            if Review.objects.filter(user=self.user, game=game).exists():
+                raise forms.ValidationError("Você já fez uma avaliação para este jogo.")
+
+        return cleaned_data
     
     def clean_rating(self):
         """Custom validation to ensure rating is between 1 and 10."""

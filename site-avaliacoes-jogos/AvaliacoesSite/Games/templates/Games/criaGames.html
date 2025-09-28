@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
 </head>
 <body>
+    <a href="{% url 'home-page' %}">Home-Page</a> |
+    {% include 'Reviews/links.html' %}
     {% include 'Games/links.html' %}
+    {% include 'Seguranca/links.html' %}
     <h1>{% if object %}Atualizar Jogo{% else %}Criar um Jogo{% endif %}</h1>
 
     <form action="" method="POST">

@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="{% static 'Reviews/css/estilo.css' %}">
 </head>
 <body>
+    <a href="{% url 'home-page' %}">Home-Page</a> |
     {% include 'Reviews/links.html' %}
+    {% include 'Games/links.html' %}
+    {% include 'Seguranca/links.html' %}
     <h1>Minhas Avaliações</h1>
     <table>
         <tr>
@@ -19,20 +22,20 @@
             <th>Ação</th>
         </tr>
         {% for review in reviews %}
-        <tr>
-            <td>{{ review.title }}</td>
-            <td>{{ review.rating }}</td>
-            <td>{{ review.comment }}</td>
-            <td>{{ review.created_at|date:"d/m/Y H:i" }}</td>
-            <td>
-                <a href="{% url 'Reviews:atualiza-review' pk=review.id %}">Editar</a> |
-                <a href="{% url 'Reviews:deleta-review' pk=review.id %}">Excluir</a>
-            </td>
-        </tr>
+            <tr>
+                <td>{{ review.game.title }}</td>
+                <td>{{ review.rating }}</td>
+                <td>{{ review.comment }}</td>
+                <td>{{ review.created_at|date:"d/m/Y H:i" }}</td>
+                <td>
+                    <a href="{% url 'Reviews:atualiza-review' pk=review.id %}">Editar</a> |
+                    <a href="{% url 'Reviews:deleta-review' pk=review.id %}">Excluir</a>
+                </td>
+            </tr>
         {% empty %}
-        <tr>
-            <th colspan="5">Nenhuma avaliação cadastrada</th>
-        </tr>
+            <tr>
+                <th colspan="5">Nenhuma avaliação cadastrada</th>
+            </tr>
         {% endfor %}
     </table>
 </body>

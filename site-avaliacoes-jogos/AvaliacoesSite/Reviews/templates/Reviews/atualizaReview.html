@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="{% static 'Reviews/css/estilo.css' %}">
 </head>
 <body>
+    <a href="{% url 'home-page' %}">Home-Page</a> |
     {% include 'Reviews/links.html' %}
+    {% include 'Games/links.html' %}
+    {% include 'Seguranca/links.html' %}
     <h1>Atualizar Avaliação</h1>
     {% if mensagem %}
         <p>{{ mensagem }}</p>

@@ -1,4 +1,5 @@
 {% load static %}
+{% load auth_extras %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,8 +9,11 @@
     <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
 </head>
 <body>
+    <a href="{% url 'home-page' %}">Home-Page</a> |
+    {% include 'Reviews/links.html' %}
     {% include 'Games/links.html' %}
-    <h1>Minhas Avaliações</h1>
+    {% include 'Seguranca/links.html' %}
+    <h1>Lista de Jogos</h1>
     <table>
         <tr>
             <th>Título</th>
@@ -19,21 +23,38 @@
             <th>Desenvolvedor</th>
         </tr>
         {% for game in games %}
-        <tr>
-            <td>{{ game.title }}</td>
-            <td>{{ game.platforms }}</td>
-            <td>{{ game.description }}</td>
-            <td>{{ game.release_date|date:"d/m/Y" }}</td>
-            <td>{{ game.developer }}</td>
-            <td>
-                <a href="{% url 'Games:atualiza-games' pk=game.pk %}">Editar</a> |
-                <a href="{% url 'Games:deleta-games' pk=game.pk %}">Excluir</a>
-            </td>
-        </tr>
+            <tr>
+                <td>{{ game.title }}</td>
+                <td>{{ game.formatted_platforms }}</td>
+                <td>{{ game.description }}</td>
+                <td>{{ game.release_date|date:"d/m/Y" }}</td>
+                <td>{{ game.developer }}</td>
+            </tr>
+            {% if game.reviews.all %}
+                <tr>
+                    <td colspan="6">
+                        <h3>Avaliações para {{ game.title }}</h3>
+                        <table>
+                            <tr>
+                                <th>Usuário</th>
+                                <th>Nota</th>
+                                <th>Comentário</th>
+                            </tr>
+                            {% for review in game.reviews.all %}
+                                <tr>
+                                    <td>{{ review.user.username }}</td>
+                                    <td>{{ review.rating }}</td>
+                                    <td>{{ review.comment }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                </tr>
+            {% endif %}
         {% empty %}
-        <tr>
-            <th colspan="5">Nenhuma avaliação cadastrada</th>
-        </tr>
+            <tr>
+                <th colspan="5">Nenhum jogo cadastrado</th>
+            </tr>
         {% endfor %}
     </table>
 </body>

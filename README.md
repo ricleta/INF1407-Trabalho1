@@ -34,4 +34,4 @@ TODO
 ### O que funcionou
 TODO
 ### O que *não* funcionou
-TODO
+- Quando uma review estiver sendo atualizada, o usuário deveria ter o dropdown menu restringido ao jogo da review e desabilitado, mas no caso apesar de só permitir selecionar o jogo da review, o dropdown fica habilitado. 

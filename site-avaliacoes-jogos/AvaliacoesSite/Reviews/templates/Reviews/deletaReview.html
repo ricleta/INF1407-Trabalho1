@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="{% static 'Reviews/css/estilo.css' %}">
 </head>
 <body>
+    <a href="{% url 'home-page' %}">Home-Page</a> |
     {% include 'Reviews/links.html' %}
+    {% include 'Games/links.html' %}
+    {% include 'Seguranca/links.html' %}
     <h1>Excluir Avaliação</h1>
-    <p>Deseja realmente excluir a avaliação de "{{ review.title }}"?</p>
+    <p>Deseja realmente excluir a avaliação de "{{ review.game.title }}"?</p>
     <form action="" method="POST">
         {% csrf_token %}
         <button type="submit">Confirmar Exclusão</button>
