@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block titulo %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'Seguranca/css/estilo.css' %}">
+    </head>
+    <body>
+        {% include 'Seguranca/links.html' %}
+        <div>
+            {% block conteudo %}{% endblock %}
+        </div>
+    </body>
+</html>

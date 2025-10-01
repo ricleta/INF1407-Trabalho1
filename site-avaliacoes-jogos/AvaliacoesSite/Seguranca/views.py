@@ -4,6 +4,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetCompleteView
 
 from .forms import SignUpForm
 
@@ -30,3 +31,15 @@ def logout_view(request):
 class actual_logout_view(LogoutView):
     def get_success_url(self):
         return reverse_lazy('home-page')
+
+class ChangePasswordView(PasswordChangeView):
+    template_name = 'Seguranca/change_password.html'
+    success_url = reverse_lazy('password_change_done')
+
+class PasswordChangeDoneView(PasswordChangeDoneView):
+    template_name = 'Seguranca/password_change_done.html'
+    success_url = reverse_lazy('home-page')
+
+class PasswordResetComplete(PasswordResetCompleteView):
+    template_name = 'Seguranca/password_reset_complete.html'
+    success_url = reverse_lazy('home-page')

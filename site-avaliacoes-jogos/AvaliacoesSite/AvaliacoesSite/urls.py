@@ -22,8 +22,8 @@ from Reviews import views as views_reviews
 urlpatterns = [
     path('', views_reviews.home_page, name='home-page'),
     path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('seguranca/', include('Seguranca.urls')),
+    path('accounts/', include('django.contrib.auth.urls')), # Keep for any auth views you don't override
     path('games/', include('Games.urls')),
     path('reviews/', include('Reviews.urls')),
-    path('seguranca/', include('Seguranca.urls')),
 ]
