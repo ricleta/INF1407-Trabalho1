@@ -1,6 +1,10 @@
 from django.db import models
 
 class GamesModel(models.Model):
+    '''
+    Model representing a game.
+    '''
+
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100, help_text='Título do jogo')
     platforms = models.CharField(max_length=100, help_text='Plataformas suportadas')

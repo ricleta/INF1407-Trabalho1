@@ -3,6 +3,9 @@ from django import forms
 from Games.models import GamesModel
 
 class ReviewForm(forms.ModelForm):
+    '''
+    Form for creating and updating game reviews.
+    '''
     game = forms.ModelChoiceField(
         queryset=GamesModel.objects.all(),
         label="Jogo",
