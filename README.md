@@ -13,7 +13,7 @@ docker pull ghcr.io/ricleta/inf1407-trabalho1:1.0
 ```
 - Rodar imagem
 ```
-docker run -d -p 8000:8000 --name inf1407-trabalho1 ghcr.io/ricleta/inf1407-trabalho1:1.0
+docker run -p 8000:8000 --name inf1407-trabalho1 ghcr.io/ricleta/inf1407-trabalho1:1.0
 ```
 
 ## Escopo do site
