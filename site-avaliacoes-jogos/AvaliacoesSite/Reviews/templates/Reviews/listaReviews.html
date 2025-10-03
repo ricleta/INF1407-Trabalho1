@@ -1,18 +1,23 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Avaliações</title>
-    <link rel="stylesheet" href="{% static 'Reviews/css/estilo.css' %}">
+    <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
 </head>
 <body>
-    <a href="{% url 'home-page' %}">Home-Page</a> |
-    {% include 'Reviews/links.html' %}
-    {% include 'Games/links.html' %}
-    {% include 'Seguranca/links.html' %}
+    <nav>
+        <a href="{% url 'home-page' %}">Home-Page</a>
+        {% include 'Reviews/links.html' %}
+        {% include 'Games/links.html' %}
+        {% include 'Seguranca/links.html' %}
+    </nav>
+    
     <h1>Minhas Avaliações</h1>
+    
     <table>
         <tr>
             <th>Título</th>
@@ -28,8 +33,8 @@
                 <td>{{ review.comment }}</td>
                 <td>{{ review.created_at|date:"d/m/Y H:i" }}</td>
                 <td>
-                    <a href="{% url 'Reviews:atualiza-review' pk=review.id %}">Editar</a> |
-                    <a href="{% url 'Reviews:deleta-review' pk=review.id %}">Excluir</a>
+                    <a class="btn btn-primary" href="{% url 'Reviews:atualiza-review' pk=review.id %}">Editar</a> |
+                    <a class="btn btn-danger" href="{% url 'Reviews:deleta-review' pk=review.id %}">Excluir</a>
                 </td>
             </tr>
         {% empty %}

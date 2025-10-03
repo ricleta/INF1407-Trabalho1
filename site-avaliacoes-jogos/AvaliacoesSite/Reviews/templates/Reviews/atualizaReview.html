@@ -5,17 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atualizar Avaliação</title>
-    <link rel="stylesheet" href="{% static 'Reviews/css/estilo.css' %}">
+    <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
 </head>
 <body>
-    <a href="{% url 'home-page' %}">Home-Page</a> |
-    {% include 'Reviews/links.html' %}
-    {% include 'Games/links.html' %}
-    {% include 'Seguranca/links.html' %}
+    <nav>
+        <a href="{% url 'home-page' %}">Home-Page</a>
+        {% include 'Reviews/links.html' %}
+        {% include 'Games/links.html' %}
+        {% include 'Seguranca/links.html' %}
+    </nav>
+
     <h1>Atualizar Avaliação</h1>
+    
     {% if mensagem %}
         <p>{{ mensagem }}</p>
     {% endif %}
+    
     <form action="" method="POST">
         <fieldset style="width: max-content;">
             <legend>Editar Avaliação</legend>

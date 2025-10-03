@@ -1,8 +1,8 @@
 {% load auth_extras %}
 
-<a href="{% url 'Games:home-page-games' %}">Meus Jogos</a> |
-<a href="{% url 'Games:lista-games' %}">Todos os jogos</a> |
+<a href="{% url 'Games:lista-games' %}">Todos os jogos</a> 
 
 {% if user.is_authenticated and user|has_group:"GameDev" %}
-    <a href="{% url 'Games:cria-games' %}">Criar Jogo</a> |
+    <a href="{% url 'Games:home-page-games' %}">Meus Jogos</a> 
+    <a href="{% url 'Games:cria-games' %}">Criar Jogo</a> 
 {% endif %}

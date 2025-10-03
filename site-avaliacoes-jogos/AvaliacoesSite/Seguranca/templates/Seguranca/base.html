@@ -4,10 +4,12 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block titulo %}{% endblock %}</title>
-        <link rel="stylesheet" href="{% static 'Seguranca/css/estilo.css' %}">
+        <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
     </head>
     <body>
-        {% include 'Seguranca/links.html' %}
+        <nav>
+            {% include 'Seguranca/links.html' %}
+        </nav>
         <div>
             {% block conteudo %}{% endblock %}
         </div>

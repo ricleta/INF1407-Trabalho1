@@ -4,8 +4,17 @@
 - Felipe de Aragão Falcão 2120360
 - Ricardo Bastos Leta Vieira, 2110526
 
-## Link para o site
-TODO
+## Link para a imagem docker
+https://github.com/ricleta/INF1407-Trabalho1/pkgs/container/inf1407-trabalho1
+
+- Puxar imagem
+```
+docker pull ghcr.io/ricleta/inf1407-trabalho1:1.0
+```
+- Rodar imagem
+```
+docker run -d -p 8000:8000 --name inf1407-trabalho1 ghcr.io/ricleta/inf1407-trabalho1:1.0
+```
 
 ## Escopo do site
 O site "Avaliações de Jogos" foi desenvolvido em Python com o framework Django. O objetivo principal é criar uma plataforma onde **Desenvolvedores de Jogos** (GameDevs) e **Avaliações** (Reviewers) possam interagir. A aplicação implementa um sistema de login e perfis de usuário com permissões baseadas em grupos, garantindo que cada tipo de usuário tenha acesso a funcionalidades específicas. A interface foi construída com HTML e CSS, sem a utilização de JavaScript.
@@ -74,3 +83,4 @@ O site oferece as seguintes funcionalidades principais:
 
 ### O que *não* funcionou 
 - **Atualização de Avaliação:** Quando uma avaliação está sendo atualizada, o campo `game` no formulário `ReviewForm` deveria ter o dropdown menu desabilitado, permitindo apenas a visualização do jogo original da avaliação. Atualmente, o campo está habilitado, embora só permita a seleção do jogo já avaliado.
+- **Atualização de Games:** Quando um game está sendo atualizado, o campo `platforms` no formulário `GamesForm` deveria já mostrar qual/is a/as opção/ções de plataformas que já tinham sido previamente selecionadas. Atualmente, o campo é resetado ao entrar na página como se não tivesse nenhuma plataforma selecionada anteriormente.

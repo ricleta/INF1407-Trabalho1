@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excluir Avaliação</title>
-    <link rel="stylesheet" href="{% static 'Reviews/css/estilo.css' %}">
+    <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
 </head>
 <body>
-    <a href="{% url 'home-page' %}">Home-Page</a> |
-    {% include 'Reviews/links.html' %}
-    {% include 'Games/links.html' %}
-    {% include 'Seguranca/links.html' %}
+    <nav>
+        <a href="{% url 'home-page' %}">Home-Page</a>
+        {% include 'Reviews/links.html' %}
+        {% include 'Games/links.html' %}
+        {% include 'Seguranca/links.html' %}
+    </nav>
+    
     <h1>Excluir Avaliação</h1>
+    
     <p>Deseja realmente excluir a avaliação de "{{ review.game.title }}"?</p>
     <form action="" method="POST">
         {% csrf_token %}

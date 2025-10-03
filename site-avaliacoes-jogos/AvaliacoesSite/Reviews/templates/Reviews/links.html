@@ -1,6 +1,6 @@
 {% load auth_extras %}
 
 {% if user.is_authenticated and user|has_group:"Reviewers" %}
-    <a href="{% url 'Reviews:lista-reviews' %}">Minhas Avaliações</a> |
-    <a href="{% url 'Reviews:cria-review' %}">Criar Avaliação</a> |
+    <a href="{% url 'Reviews:lista-reviews' %}">Minhas Avaliações</a>
+    <a href="{% url 'Reviews:cria-review' %}">Criar Avaliação</a>
 {% endif %}

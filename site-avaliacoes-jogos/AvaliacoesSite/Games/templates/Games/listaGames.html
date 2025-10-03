@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
 </head>
 <body>
-    <a href="{% url 'home-page' %}">Home-Page</a> |
-    {% include 'Reviews/links.html' %}
-    {% include 'Games/links.html' %}
-    {% include 'Seguranca/links.html' %}
+    <nav>
+        <a href="{% url 'home-page' %}">Home-Page</a>
+        {% include 'Reviews/links.html' %}
+        {% include 'Games/links.html' %}
+        {% include 'Seguranca/links.html' %}
+    </nav>
     <h1>Lista de Jogos</h1>
     <table>
         <tr>
@@ -33,7 +35,6 @@
             {% if game.reviews.all %}
                 <tr>
                     <td colspan="6">
-                        <h3>Avaliações para {{ game.title }}</h3>
                         <table>
                             <tr>
                                 <th>Usuário</th>

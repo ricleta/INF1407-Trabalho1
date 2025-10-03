@@ -89,7 +89,7 @@ class GamesUpdateView(UpdateView, LoginRequiredMixin):
     Only authenticated users belonging to the 'GameDev' group can update games.
     """
     model = GamesModel
-    fields = ['title', 'platforms', 'description', 'release_date', 'developer']
+    form_class = GamesForm
     template_name = 'Games/criaGames.html'
     success_url = reverse_lazy('Games:lista-games')
 
